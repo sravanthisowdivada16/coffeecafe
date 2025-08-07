@@ -1,0 +1,256 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brew Haven Coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+    }
+
+    .about {
+      background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5');
+    }
+
+    .menu-preview {
+      background-image: url('https://images.unsplash.com/photo-1584367369854-8c93c4f0af71');
+    }
+
+    .contact {
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');
+    }
+
+    .map {
+      background-color: #222;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .filters {
+      margin: 1rem 0;
+    }
+
+    .filters button {
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #fff;
+      color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .menu-card {
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    .menu-card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-card button {
+      padding: 0.5rem 1rem;
+      background-color: #d7a86e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form input, form textarea {
+      padding: 0.75rem;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: #d7a86e;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #formMessage {
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    iframe {
+      width: 100%;
+      border: 0;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .menu-items {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Brew Haven</h1>
+    <p>Where every cup tells a story ☕</p>
+  </header>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>Welcome to Brew Haven, your cozy neighborhood café where aroma meets comfort. We serve ethically sourced coffee brewed by passionate baristas. Whether you're craving a bold espresso or a smooth latte, there's something for everyone.</p>
+  </section>
+
+  <section class="menu-preview">
+    <h2>Our Signature Brews</h2>
+
+    <div class="filters">
+      <button onclick="filterMenu('all')">All</button>
+      <button onclick="filterMenu('hot')">Hot</button>
+      <button onclick="filterMenu('cold')">Cold</button>
+      <button onclick="filterMenu('iced')">Iced</button>
+    </div>
+
+    <div class="menu-items" id="menuItems">
+      <div class="menu-card" data-type="hot">
+        <h3>Classic Cappuccino</h3>
+        <p>A smooth blend of espresso and steamed milk with a creamy foam top.</p>
+        <button onclick="addToCart('Classic Cappuccino')">Order</button>
+      </div>
+      <div class="menu-card" data-type="hot">
+        <h3>Hazelnut Latte</h3>
+        <p>Rich espresso with velvety milk and a hint of hazelnut sweetness.</p>
+        <button onclick="addToCart('Hazelnut Latte')">Order</button>
+      </div>
+      <div class="menu-card" data-type="cold">
+        <h3>Cold Brew</h3>
+        <p>Steeped for 12 hours to deliver a bold, smooth, and refreshing coffee experience.</p>
+        <button onclick="addToCart('Cold Brew')">Order</button>
+      </div>
+      <div class="menu-card" data-type="iced">
+        <h3>Iced Americano</h3>
+        <p>Espresso poured over ice with chilled water – crisp and bold.</p>
+        <button onclick="addToCart('Iced Americano')">Order</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="formMessage"></p>
+    </form>
+  </section>
+
+  <section class="map">
+    <h2>Find Us Here</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799145817!2d-74.25987368735738!3d40.69767006855471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5ad66cc75%3A0x99d887fbffddf2e!2sNew%20York%20City!5e0!3m2!1sen!2sus!4v1616430647616!5m2!1sen!2sus"
+      height="300" allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Brew Haven Coffee | Made with ☕ & ❤️</p>
+  </footer>
+
+  <script>
+    function filterMenu(type) {
+      const cards = document.querySelectorAll('.menu-card');
+      cards.forEach(card => {
+        if (type === 'all' || card.dataset.type === type) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function addToCart(item) {
+      alert(`You added "${item}" to your cart!`);
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("formMessage").innerText = "Thanks for contacting us! We'll be in touch soon.";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
